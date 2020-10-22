@@ -44,7 +44,7 @@ class List {
         }
     }
     
-    //检测一个链表中是否有环，快慢指针
+    //检测一个链表中是否有环，快行指针
     
     func hasCycle(_ head: ListNode?) -> Bool {
         
@@ -55,12 +55,20 @@ class List {
             slow = slow!.next
             fast = fast!.next!.next
             
-            if slow == fast {//Todo: 需要实现Equatable协议
+            if slow == fast {//需要节点实现Equatable协议
                 return true
             }
         }
         
         return false
+    }
+}
+
+extension ListNode: Equatable {
+    
+    static func == (lhs: ListNode, rhs: ListNode) -> Bool {
+        let result = (lhs.val==rhs.val)&&(lhs.next?.val==rhs.next?.val)
+        return result
     }
 }
 ```

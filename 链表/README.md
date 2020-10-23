@@ -45,7 +45,6 @@ class List {
     }
     
     //检测一个链表中是否有环，快行指针
-    
     func hasCycle(_ head: ListNode?) -> Bool {
         
         var slow = head
@@ -61,6 +60,36 @@ class List {
         }
         
         return false
+    }
+    
+    //删除链表中倒数第n个节点（快行指针应用2）
+    func removeNthFromEnd(_ head: ListNode?, _ n: Int) ->ListNode? {
+        
+        guard let head = head else { return nil }
+        
+        let dummy = ListNode(0)//占位节点
+        dummy.next = head
+        var prev: ListNode? = dummy//前节点
+        var post: ListNode? = dummy//后节点
+        
+        //设置前后节点相差n个节点
+        for _ in 0..<n {
+            if post == nil {
+                break
+            }
+            post = post?.next
+        }
+        
+        //同时移动前后节点
+        while post != nil && post?.next != nil {
+            prev = prev?.next
+            post = post?.next
+        }
+        
+        //删除节点
+        prev?.next = prev?.next?.next
+        
+        return dummy.next
     }
 }
 

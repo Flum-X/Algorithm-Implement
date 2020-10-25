@@ -91,6 +91,29 @@ class List {
         
         return dummy.next
     }
+    
+    //反转链表
+    func reverseListNode(_ head: ListNode?) ->ListNode?{
+        
+        //定义3个指针，分别指向当前节点、它的前一个节点和后一个节点
+        var pReverseHead: ListNode? = nil
+        var pNode: ListNode? = head
+        var pPrev: ListNode? = nil
+        
+        while pNode != nil {
+            
+            let pNext = pNode?.next
+            if pNext == nil {
+                pReverseHead = pNode
+            }
+            
+            pNode?.next = pPrev
+            pPrev = pNode
+            pNode = pNext
+        }
+        
+        return pReverseHead
+    }
 }
 
 extension ListNode: Equatable {

@@ -195,11 +195,11 @@ func selectSort(_ nums: inout [Int]) {
             return
         }
         
-        for x in 1..<nums.count {
-            var y = x
-            while y>0 && nums[y]<nums[y-1] {
-                nums.swapAt(y-1, y)
-                y -= 1
+        for i in 1..<nums.count {
+            var j = i
+            while j>0 && nums[j]<nums[j-1] {
+                nums.swapAt(j-1, j)
+                j -= 1
             }
         }
     }

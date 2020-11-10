@@ -184,3 +184,23 @@ func selectSort(_ nums: inout [Int]) {
         return quickSort(left) + middle + quickSort(right)
     }
 ```
+
+### 插入排序
+
+```
+    //插入排序
+    func insertSort(_ nums: inout [Int]) {
+        
+        guard nums.count > 1 else {
+            return
+        }
+        
+        for x in 1..<nums.count {
+            var y = x
+            while y>0 && nums[y]<nums[y-1] {
+                nums.swapAt(y-1, y)
+                y -= 1
+            }
+        }
+    }
+```
